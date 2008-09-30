@@ -553,6 +553,8 @@ FILE
             puts data
           end
         end
+        sudo "gem install rubygems-update --version=1.2.0"
+        sudo "update-rubygems"
         
       end
       
