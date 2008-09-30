@@ -26,6 +26,8 @@ role :db,       "ec2-56-xx-xx-xx.z-1.compute-1.amazonaws.com", :primary => true
 # will run with RAILS_ENV set to this value.
 set :rails_env, "production"
 
+before "ec2onrails:server:set_timezone", "ec2onrails:server:grant_sudo_access"
+
 # EC2 on Rails config. 
 # NOTE: Some of these should be omitted if not needed.
 set :ec2onrails_config, {

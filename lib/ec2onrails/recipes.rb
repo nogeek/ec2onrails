@@ -47,6 +47,7 @@ Capistrano::Configuration.instance.load do
   set :user, "app"
 
   #in case any changes were made to the configs, like changing the number of mongrels
+  before "ec2onrails:setup", "ec2onrails:server:grant_sudo_access"
   before "deploy:cold", "ec2onrails:server:grant_sudo_access"
   after "deploy:symlink", "ec2onrails:server:set_roles", "ec2onrails:server:init_services"
   after "deploy:cold", "ec2onrails:db:init_backup", "ec2onrails:db:optimize", "ec2onrails:server:restrict_sudo_access"
